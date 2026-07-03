@@ -1,6 +1,6 @@
 :root {
   --fond:        #14141c;
-  --fond-doux:   #1b1c26;
+  --fond-doux:   #1f1f1e;
   --carte:       #20212d;
   --carte-hover: #262837;
   --bordure:     #33344533;
@@ -231,6 +231,147 @@ body {
   color: var(--rose);
   font-size: 0.9em;
   flex-shrink: 0;
+}
+
+/* --- Réglages --- */
+
+.reglages-bouton {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--bordure);
+  background: var(--carte);
+  color: var(--texte);
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.25s ease;
+  z-index: 20;
+}
+
+.reglages-bouton:hover {
+  background: var(--carte-hover);
+  transform: rotate(35deg);
+}
+
+.reglages-panneau {
+  position: fixed;
+  inset: 0;
+  background: #0a0a10cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 30;
+}
+
+.reglages-panneau[hidden] {
+  display: none;
+}
+
+.reglages-boite {
+  width: 100%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--fond-doux);
+  border: 1px solid var(--bordure);
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.reglages-entete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reglages-entete h2 {
+  margin: 0;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.reglages-entete button {
+  background: none;
+  border: none;
+  color: var(--texte-doux);
+  font-size: 1.1em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.reglages-entete button:hover { color: var(--texte); }
+
+.reglages-bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reglages-bloc h3 {
+  margin: 0;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+}
+
+.reglages-note {
+  margin: 0;
+  font-size: 0.85em;
+  color: var(--texte-doux);
+}
+
+.reglages-bloc textarea {
+  width: 100%;
+  resize: vertical;
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  color: var(--texte);
+  font-family: ui-monospace, monospace;
+  font-size: 0.75em;
+  padding: 8px;
+}
+
+.reglages-actions { display: flex; gap: 8px; }
+
+.reglages-bloc button:not(.reglages-entete button) {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--bordure);
+  background: var(--carte);
+  color: var(--texte);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85em;
+  transition: background 0.15s ease;
+}
+
+.reglages-bloc button:not(.reglages-entete button):hover {
+  background: var(--carte-hover);
+}
+
+.bouton-danger {
+  align-self: flex-start;
+  color: var(--rose);
+  border-color: #d6a3b855 !important;
+}
+
+.bouton-danger:hover { background: #d6a3b822 !important; }
+
+.reglages-message {
+  margin: 0;
+  min-height: 1em;
+  font-size: 0.8em;
+  color: var(--sauge);
 }
 
 /* --- Petits écrans --- */

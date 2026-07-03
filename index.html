@@ -27,16 +27,43 @@
         <polygon points="20,24 6,14 6,28 20,36" fill="#a893bf"/>
       </symbol>
 
+      <symbol id="icone_recherche" viewBox="0 0 40 40">
+        <polygon points="20,4 32,12 32,26 20,34 8,26 8,12" fill="#b8c9a3"/>
+        <polygon points="20,4 32,12 20,20 8,12" fill="#dbe6c9"/>
+      </symbol>
+
       <symbol id="icone_heighway" viewBox="0 0 40 40">
         <polygon points="6,30 20,6 34,30" fill="#d6b8ae"/>
         <polygon points="14,30 20,18 26,30" fill="#7a5f57"/>
+      </symbol>
+
+      <symbol id="icone_chaos" viewBox="0 0 40 40">
+        <polygon points="20,4 26,16 38,18 28,26 30,38 20,32 10,38 12,26 2,18 14,16" fill="#c9a3a3"/>
+        <polygon points="20,4 26,16 20,18 14,16" fill="#e6cccc"/>
       </symbol>
 
       <symbol id="icone_lorenz" viewBox="0 0 40 40">
         <polygon points="20,3 30,15 24,15 34,28 6,28 16,15 10,15" fill="#e0c9a3"/>
         <polygon points="20,3 30,15 20,15" fill="#f0e2c4"/>
       </symbol>
-      
+
+      <symbol id="icone_schrodinger" viewBox="0 0 40 40">
+        <polygon points="20,4 34,20 20,36 6,20" fill="#8f9bb0"/>
+        <polygon points="20,4 34,20 20,20" fill="#c4cede"/>
+        <polygon points="20,20 34,20 20,36" fill="#5a6478"/>
+      </symbol>
+
+      <symbol id="icone_boltzmann" viewBox="0 0 40 40">
+        <polygon points="20,3 33,11 33,29 20,37 7,29 7,11" fill="#a3b8c9"/>
+        <polygon points="20,3 33,11 20,19 7,11" fill="#cfdce6"/>
+        <polygon points="20,19 33,11 33,29 20,37" fill="#7891a8"/>
+      </symbol>
+
+      <symbol id="icone_whitehole" viewBox="0 0 40 40">
+        <polygon points="20,2 38,20 20,38 2,20" fill="#f4f1ea"/>
+        <polygon points="20,12 30,20 20,28 10,20" fill="#20212d"/>
+      </symbol>
+
     </defs>
   </svg>
 
@@ -46,6 +73,46 @@
 
 
 
+
+  <button id="reglages-bouton" class="reglages-bouton" aria-label="Réglages">⚙</button>
+
+  <div id="reglages-panneau" class="reglages-panneau" hidden>
+    <div class="reglages-boite">
+      <div class="reglages-entete">
+        <h2>Réglages</h2>
+        <button id="reglages-fermer" aria-label="Fermer">✕</button>
+      </div>
+
+      <section class="reglages-bloc">
+        <h3>Sauvegarde</h3>
+        <p class="reglages-note">La partie est sauvegardée automatiquement dans ce navigateur.</p>
+      </section>
+
+      <section class="reglages-bloc">
+        <h3>Exporter</h3>
+        <p class="reglages-note">Copiez ce code pour reprendre votre partie ailleurs.</p>
+        <textarea id="code-export" rows="3" readonly></textarea>
+        <div class="reglages-actions">
+          <button id="bouton-exporter">Régénérer</button>
+          <button id="bouton-copier">Copier</button>
+        </div>
+      </section>
+
+      <section class="reglages-bloc">
+        <h3>Importer</h3>
+        <textarea id="code-import" rows="3" placeholder="Collez votre code ici"></textarea>
+        <div class="reglages-actions">
+          <button id="bouton-importer">Charger</button>
+        </div>
+        <p id="import-message" class="reglages-message"></p>
+      </section>
+
+      <section class="reglages-bloc">
+        <h3>Réinitialiser</h3>
+        <button id="bouton-reinitialiser" class="bouton-danger">Réinitialiser la partie</button>
+      </section>
+    </div>
+  </div>
 
   <div class="jeu">
 

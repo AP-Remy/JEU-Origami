@@ -9,11 +9,16 @@ const ENTROPIE_MAX = 1e104; // mort thermique = victoire
 //{ id,nom, coutBase,facteur, prod}
 
 const PLIEUSES = [
-  { id: "auto",     nom: "Plieuse automatique", coutBase: 15,     facteur: 1.15, prod: 0.1 , icone: "icone_auto"},
-  { id: "usine",    nom: "Usine",               coutBase: 100,    facteur: 1.15, prod: 1 , icone: "icone_usine"},
-  { id: "miura",    nom: "Pli de Miura",        coutBase: 1100,   facteur: 1.15, prod: 8 , icone: "icone_miura"},
-  { id: "heighway", nom: "Dragon de Heighway",  coutBase: 12000,  facteur: 1.15, prod: 42 , icone: "icone_heighway"},
-  { id: "lorenz",   nom: "Attracteur de Lorenz",coutBase: 130000, facteur: 1.15, prod: 256, icone: "icone_lorenz" },
+  { id: "auto",        nom: "Plieuse automatique",   coutBase: 15,          facteur: 1.15, prod: 1,    icone: "icone_auto" },
+  { id: "miura",       nom: "Pli de Miura",          coutBase: 100,         facteur: 1.15, prod: 10,      icone: "icone_miura" },
+  { id: "usine",       nom: "Usine",                 coutBase: 1100,        facteur: 1.15, prod: 70,      icone: "icone_usine" },
+  { id: "recherche",   nom: "Centre de recherche",   coutBase: 12000,       facteur: 1.15, prod: 600,     icone: "icone_recherche" },
+  { id: "heighway",    nom: "Dragon de Heighway",    coutBase: 130000,      facteur: 1.15, prod: 5000,    icone: "icone_heighway" },
+  { id: "chaos",       nom: "Théorie du chaos",      coutBase: 1400000,     facteur: 1.15, prod: 10400,   icone: "icone_chaos" },
+  { id: "lorenz",      nom: "Attracteur de Lorenz",  coutBase: 20000000,    facteur: 1.15, prod: 700000,   icone: "icone_lorenz" },
+  { id: "schrodinger", nom: "Le Chat de Schrödinger",coutBase: 330000000,   facteur: 1.15, prod: 4400000,  icone: "icone_schrodinger" },
+  { id: "boltzmann",   nom: "Le Cerveau de Boltzmann",coutBase: 5100000000, facteur: 1.15, prod: 26000000, icone: "icone_boltzmann" },
+  { id: "whitehole",   nom: "White hole",            coutBase: 75000000000,facteur: 1.15, prod: 1600000000,icone: "icone_whitehole" },
 ];
 
 // --- Définition des upgrades ---
@@ -22,7 +27,7 @@ const PLIEUSES = [
 
 const UPGRADES = [
   { id: "souple",   nom: "Papier souple", cout: 15, desc: "Double l'entropie de chaque clic" ,effet: { cible: "clic", type: "mult", valeur: 2 } },
-  { id: "graisse", nom: "Graissage des machine", cout: 50, desc: "Double la cadence des machines",
+  { id: "graisse", nom: "Graissage des machine", cout: 50, desc: "Double la cadence de tous les producteurs",
   effet: { cible: "auto", type: "mult", valeur: 2 } },
 ];
 
@@ -88,6 +93,7 @@ function production_par_clic(etat) {
 function plier(etat) {
   const gain = production_par_clic(etat);
   etat.entropie = etat.entropie + gain;
+  afficher();
 }
 
 
@@ -126,6 +132,84 @@ function acheterUpgrade(etat, id) {
   etat.entropie = etat.entropie - def.cout;
   etat.upgrades.push(id);
   return true;
+}
+
+
+
+
+// --- Sauvegarde ---
+
+const VERSION_SAUVEGARDE = 1;
+const CLE_SAUVEGARDE = "carnotsDraft_save";
+let sauvegardeMemoire = null;   // secours si localStorage est indisponible (ex: aperçu d'artifact)
+
+function etatVersSauvegarde(etat) {
+  return {
+    version: VERSION_SAUVEGARDE,
+    entropie: etat.entropie,
+    plieuses: etat.plieuses,
+    upgrades: etat.upgrades,
+  };
+}
+
+function appliquerSauvegarde(etat, sauvegarde) {
+  if (!sauvegarde || sauvegarde.version !== VERSION_SAUVEGARDE) {
+    return false;
+  }
+
+  etat.entropie = sauvegarde.entropie ?? 0;
+  for (const def of PLIEUSES) {
+    etat.plieuses[def.id] = sauvegarde.plieuses?.[def.id] ?? 0;
+  }
+  etat.upgrades = (sauvegarde.upgrades ?? []).filter(id => UPGRADES.some(u => u.id === id));
+  return true;
+}
+
+function sauvegarder() {
+  const donnees = JSON.stringify(etatVersSauvegarde(etat));
+  try {
+    localStorage.setItem(CLE_SAUVEGARDE, donnees);
+  } catch {
+    sauvegardeMemoire = donnees;
+  }
+}
+
+function charger() {
+  let donnees;
+  try {
+    donnees = localStorage.getItem(CLE_SAUVEGARDE);
+  } catch {
+    donnees = sauvegardeMemoire;
+  }
+  if (!donnees) return;
+
+  try {
+    appliquerSauvegarde(etat, JSON.parse(donnees));
+  } catch {
+    // sauvegarde corrompue -> on l'ignore
+  }
+}
+
+function exporterCode() {
+  return btoa(JSON.stringify(etatVersSauvegarde(etat)));
+}
+
+function importerCode(code) {
+  try {
+    return appliquerSauvegarde(etat, JSON.parse(atob(code.trim())));
+  } catch {
+    return false;
+  }
+}
+
+function reinitialiser() {
+  etat = etatInitial();
+  sauvegardeMemoire = null;
+  try {
+    localStorage.removeItem(CLE_SAUVEGARDE);
+  } catch {
+    // rien à faire
+  }
 }
 
 
@@ -221,6 +305,7 @@ function etatInitial() {
   };
 }
 let etat = etatInitial()
+charger();
 
 
 let dernierTick = Date.now();   // horodatage du dernier passage, en millisecondes
@@ -265,7 +350,61 @@ elPliage.addEventListener("click", function () {
   plier(etat);
   afficher();
 });
-construireBoutique()
-construireUpgrades()
+construireBoutique();
+construireUpgrades();
 afficher();
+
+setInterval(sauvegarder, 10000);   // autosave toutes les 10 secondes
+window.addEventListener("beforeunload", sauvegarder);
+
+
+// --- Menu des réglages ---
+
+const elReglagesBouton  = document.getElementById("reglages-bouton");
+const elReglagesPanneau = document.getElementById("reglages-panneau");
+const elReglagesFermer  = document.getElementById("reglages-fermer");
+const elCodeExport      = document.getElementById("code-export");
+const elCodeImport      = document.getElementById("code-import");
+const elImportMessage   = document.getElementById("import-message");
+
+function ouvrirReglages() {
+  elCodeExport.value = exporterCode();
+  elImportMessage.textContent = "";
+  elReglagesPanneau.hidden = false;
+}
+
+function fermerReglages() {
+  elReglagesPanneau.hidden = true;
+}
+
+elReglagesBouton.addEventListener("click", ouvrirReglages);
+elReglagesFermer.addEventListener("click", fermerReglages);
+elReglagesPanneau.addEventListener("click", function (evenement) {
+  if (evenement.target === elReglagesPanneau) fermerReglages();
+});
+
+document.getElementById("bouton-exporter").addEventListener("click", function () {
+  elCodeExport.value = exporterCode();
+});
+
+document.getElementById("bouton-copier").addEventListener("click", function () {
+  navigator.clipboard.writeText(elCodeExport.value);
+});
+
+document.getElementById("bouton-importer").addEventListener("click", function () {
+  const succes = importerCode(elCodeImport.value);
+  elImportMessage.textContent = succes ? "Partie restaurée." : "Code invalide.";
+  if (succes) {
+    afficher();
+    sauvegarder();
+  }
+});
+
+document.getElementById("bouton-reinitialiser").addEventListener("click", function () {
+  if (confirm("Réinitialiser la partie ? Cette action est irréversible.")) {
+    reinitialiser();
+    afficher();
+    fermerReglages();
+  }
+});
 
