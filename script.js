@@ -17,8 +17,8 @@ const PLIEUSES = [
   { id: "labo",        nom: "Centre de recherche",         coutBase: 1400000,                 facteur: 1.15, prod: 14000,          icone: "icone_labo" },
   { id: "koch",        nom: "Flocon de Koch",              coutBase: 20000000,                facteur: 1.15, prod: 78000,          icone: "icone_koch" },
   { id: "boulanger",   nom: "Transformation du boulanger", coutBase: 330000000,               facteur: 1.15, prod: 1100000,         icone: "icone_boulanger" },
-  { id: "brownien",    nom: "Moteur brownien",             coutBase: 5100000000,              facteur: 1.15, prod: 15000000,        icone: "icone_brownien" },
-  { id: "joule",       nom: "Détente de Joule",            coutBase: 75000000000,             facteur: 1.15, prod: 200000000,       icone: "icone_joule" },
+  { id: "brownien",    nom: "Moteur brownien",             coutBase: 5000000000,              facteur: 1.15, prod: 15000000,        icone: "icone_brownien" },
+  { id: "joule",       nom: "Détente de Joule",            coutBase: 50000000000,             facteur: 1.15, prod: 200000000,       icone: "icone_joule" },
   { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 1000000000000,           facteur: 1.15, prod: 3000000000,      icone: "icone_lorenz" },
   { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 14000000000000,          facteur: 1.15, prod: 40000000000,      icone: "icone_landauer" },
   { id: "turing",      nom: "Machine de Turing",           coutBase: 170000000000000,         facteur: 1.15, prod: 500000000000,     icone: "icone_turing" },
@@ -60,10 +60,10 @@ const UPGRADES = [
     effet: { cible: "production", type: "mult", valeur: 1 } },
   { id: "neige", nom: "Il neige !", cout: 150000000,  desc: "Des flocons partout",
     effet: { cible: "koch", type: "mult", valeur: 3 } },
-
-
-
-    
+  { id: "calculateur", nom: "Super Calculateur", cout: 300000000,  desc: "Entropie x3 pour le boulanger",
+    effet: { cible: "boulanger", type: "mult", valeur: 3 } },
+  { id: "4dimension", nom: "Dimension 4", cout: 5000000000,  desc: "Le clic change de niveau",
+    effet: { cible: "clic", type: "add", valeur: 1000 } },
   { id: "secondprincipe", nom: "Second principe", cout: 20000000000000,  desc: "La loi qui gouverne tout : double le clic et la production",
     effet: { cible: "global", type: "mult", valeur: 2 } },
   { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : double Lorenz",
@@ -426,6 +426,7 @@ const elSectionAmeliorations = document.getElementById("section-ameliorations");
 const elValiderPuzzle     = document.getElementById("valider");
 const elEntropieTaux      = document.getElementById("entropie-taux");
 const elAirePliageNote    = document.getElementById("aire-pliage-note");
+const elPuissanceClic     = document.getElementById("puissance-clic");
 
 function afficher() {
   elEntropie.textContent = formaterEntropie(etat.entropie);
@@ -439,6 +440,11 @@ function afficher() {
     elEntropieTaux.textContent = "+" + formaterNombre(productionTotale(etat)) + "/s";
   }
 
+  elPuissanceClic.hidden = !etat.tauxDebloque;
+  if (!elPuissanceClic.hidden) {
+    elPuissanceClic.textContent = "Puissance du clic : +" + formaterNombre(production_par_clic(etat));
+  }
+
   elAirePliageNote.hidden = etat.boutiqueDebloquee;
 
   elPanneauPlieuses.hidden = !etat.boutiqueDebloquee;
@@ -449,7 +455,7 @@ function afficher() {
   elJeu.classList.toggle("sans-panneau", elPanneauPlieuses.hidden);
 
   if (!elPanneauPuzzle.hidden) {
-    elValiderPuzzle.textContent = "-" + Math.floor(coutTentativePuzzle(etat)).toLocaleString("fr-FR");
+    elValiderPuzzle.textContent = "-" + formaterNombre(coutTentativePuzzle(etat));
   }
 
   let dernierRangPossede = -1;

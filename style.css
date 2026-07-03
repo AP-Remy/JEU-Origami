@@ -295,6 +295,15 @@ body {
 #boutique { max-height: 44vh; }
 #upgrades { max-height: 26vh; }
 
+.puissance-clic {
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+  margin: 0 0 10px 4px;
+}
+
 #boutique::-webkit-scrollbar,
 #upgrades::-webkit-scrollbar { width: 6px; }
 #boutique::-webkit-scrollbar-thumb,
