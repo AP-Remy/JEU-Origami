@@ -137,6 +137,72 @@ function acheterUpgrade(etat, id) {
 
 
 
+const elBoutique = document.getElementById("boutique");
+
+function construireBoutique() {
+  elBoutique.innerHTML = "";
+
+  for (const def of PLIEUSES) {
+    const carte = document.createElement("button");
+    carte.className = "plieuse";
+    carte.dataset.id = def.id;
+
+    carte.innerHTML = `
+      <svg class="icone" viewBox="0 0 40 40"><use href="#${def.icone}"/></svg>
+      <div class="infos">
+        <span class="nom">${def.nom}</span>
+        <span class="desc">${def.desc ?? ""}</span>
+      </div>
+      <div class="chiffres">
+        <span class="prix"></span>
+        <span class="quantite"></span>
+        <span class="prod"></span>
+      </div>`;
+
+    carte.addEventListener("click", function () {
+      acheterPlieuse(etat, def.id);
+      afficher();
+    });
+
+    elBoutique.appendChild(carte);
+  }
+}
+
+
+
+
+
+const elUpgrades = document.getElementById("upgrades");
+
+function construireUpgrades() {
+  elUpgrades.innerHTML = "";
+
+  for (const def of UPGRADES) {
+    const carte = document.createElement("button");
+    carte.className = "upgrade";
+    carte.dataset.id = def.id;
+
+    carte.innerHTML = `
+      <div class="infos">
+        <span class="nom">${def.nom}</span>
+        <span class="desc">${def.desc ?? ""}</span>
+      </div>
+      <span class="prix">${def.cout}</span>`;
+
+    carte.addEventListener("click", function () {
+      acheterUpgrade(etat, def.id);
+      afficher();
+    });
+
+    elUpgrades.appendChild(carte);
+  }
+}
+
+
+
+
+
+
 
 
 
@@ -157,13 +223,49 @@ function etatInitial() {
 let etat = etatInitial()
 
 
-
 let dernierTick = Date.now();   // horodatage du dernier passage, en millisecondes
 function tick() {
   const maintenant = Date.now();
   const dt = (maintenant - dernierTick) / 1000;   // secondes écoulées depuis le dernier tick
   dernierTick = maintenant;
-
   etat.entropie = etat.entropie + productionTotale(etat) * dt;
+  afficher();
 }
 setInterval(tick, 100);   // on appelle tick 10 fois par seconde
+
+
+const elEntropie = document.getElementById("entropie");
+const elPliage   = document.getElementById("pliage");
+
+
+function afficher() {
+  elEntropie.textContent = Math.floor(etat.entropie);
+
+  for (const def of PLIEUSES) {
+    const carte = elBoutique.querySelector(`[data-id="${def.id}"]`);
+    const quantite = etat.plieuses[def.id];
+    const prix = def.coutBase * def.facteur ** quantite;
+
+    carte.querySelector(".prix").textContent = Math.ceil(prix);
+    carte.querySelector(".prod").textContent = def.prod;
+    carte.querySelector(".quantite").textContent = "×" + quantite;
+  }
+  for (const def of UPGRADES) {
+    const carte = elUpgrades.querySelector(`[data-id="${def.id}"]`);
+    if (etat.upgrades.includes(def.id)) {
+      carte.style.display = "none";     // possédé -> on cache la carte
+    } else {
+      carte.style.display = "";         // pas encore -> on la montre
+    }
+  }
+}
+
+
+elPliage.addEventListener("click", function () {
+  plier(etat);
+  afficher();
+});
+construireBoutique()
+construireUpgrades()
+afficher();
+

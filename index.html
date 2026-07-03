@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Carnot's Draft</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-  <script src="script.js"></script>  
+
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <symbol id="icone_auto" viewBox="0 0 40 40">
+        <polygon points="20,4 36,20 20,36 4,20" fill="#9db4d0"/>
+        <polygon points="20,4 36,20 20,20" fill="#c9d6e6"/>
+      </symbol>
+
+      <symbol id="icone_usine" viewBox="0 0 40 40">
+        <polygon points="4,34 4,16 14,24 14,10 26,20 26,8 36,18 36,34" fill="#a9c2b8"/>
+        <polygon points="4,34 20,20 36,34" fill="#d3e2da"/>
+      </symbol>
+
+      <symbol id="icone_miura" viewBox="0 0 40 40">
+        <polygon points="20,4 34,14 20,24 6,14" fill="#c7aed6"/>
+        <polygon points="20,24 34,14 34,28 20,36" fill="#8f7aa8"/>
+        <polygon points="20,24 6,14 6,28 20,36" fill="#a893bf"/>
+      </symbol>
+
+      <symbol id="icone_heighway" viewBox="0 0 40 40">
+        <polygon points="6,30 20,6 34,30" fill="#d6b8ae"/>
+        <polygon points="14,30 20,18 26,30" fill="#7a5f57"/>
+      </symbol>
+
+      <symbol id="icone_lorenz" viewBox="0 0 40 40">
+        <polygon points="20,3 30,15 24,15 34,28 6,28 16,15 10,15" fill="#e0c9a3"/>
+        <polygon points="20,3 30,15 20,15" fill="#f0e2c4"/>
+      </symbol>
+      
+    </defs>
+  </svg>
 
 
 
@@ -18,14 +47,40 @@
 
 
 
+  <div class="jeu">
 
+    <header class="entete">
+      <span class="entete-label">Entropie</span>
+      <p id="entropie">0</p>
+    </header>
 
+    <main class="aire-pliage">
+      <button id="pliage" aria-label="Plier">
+        <svg class="pliage-forme" viewBox="0 0 100 100">
+          <polygon points="50,6 94,50 50,94 6,50" class="face face-a"/>
+          <polygon points="50,6 94,50 50,50" class="face face-b"/>
+          <polygon points="50,50 94,50 50,94" class="face face-c"/>
+        </svg>
+      </button>
+      <p class="aire-pliage-note">cliquer pour plier</p>
+    </main>
 
+    <aside class="panneau">
 
+      <section class="panneau-section">
+        <h2>Plieuses</h2>
+        <div id="boutique"></div>
+      </section>
 
+      <section class="panneau-section">
+        <h2>Améliorations</h2>
+        <div id="upgrades"></div>
+      </section>
 
+    </aside>
 
+  </div>
 
-
+  <script src="script.js"></script>
 </body>
 </html>
