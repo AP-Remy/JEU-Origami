@@ -9,7 +9,7 @@ const ENTROPIE_MAX = 1e104; // mort thermique = victoire
 //{ id,nom, coutBase,facteur, prod}
 
 const PLIEUSES = [
-  { id: "mains",       nom: "Mains nues",                  coutBase: 15,                      facteur: 1.15, prod: 1,           icone: "icone_mains" },
+  { id: "mains",       nom: "Main",                  coutBase: 15,                      facteur: 1.15, prod: 1,           icone: "icone_mains" },
   { id: "auto",        nom: "Plieuse automatique",         coutBase: 100,                     facteur: 1.15, prod: 10,             icone: "icone_auto" },
   { id: "miura",       nom: "Pli de Miura",                coutBase: 1100,                    facteur: 1.15, prod: 80,             icone: "icone_miura" },
   { id: "usine",       nom: "Usine de pliage",             coutBase: 12000,                   facteur: 1.15, prod: 1000,            icone: "icone_usine" },
