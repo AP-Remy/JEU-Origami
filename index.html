@@ -1,85 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plier l'univers</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body data-tier="0">
-<div id="app">
 
-  <header class="hud">
-    <div class="bar-block entropy-block">
-      <div class="bar-head">
-        <span class="bar-label">Entropie</span>
-        <span class="bar-value" id="entropy-value">0</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-entropy" id="entropy-fill"></div>
-      </div>
-    </div>
 
-    <div class="bar-block certainty-block">
-      <div class="bar-head">
-        <span class="bar-value" id="certainty-value">100%</span>
-        <span class="bar-label">Certitude du démon</span>
-      </div>
-      <div class="bar-track">
-        <div class="bar-fill fill-certainty" id="certainty-fill"></div>
-      </div>
-    </div>
-  </header>
+<body>
+  <script src="script.js"></script>  
 
-  <main class="stage">
-    <button class="origami" id="origami" aria-label="Plier">
-      <span class="face face-back"></span>
-      <span class="face face-front"></span>
-      <span class="creases" id="creases"></span>
-    </button>
-    <p class="fold-count" id="fold-count">0 plis</p>
-  </main>
 
-  <aside class="shop">
-    <h2 class="shop-title">Plieuses</h2>
-    <ul class="shop-list" id="shop-list"></ul>
-  </aside>
 
-  <footer class="tiers" id="tiers"></footer>
 
-  <button class="gear-btn" id="gear-btn" aria-label="Options et sauvegarde" title="Options et sauvegarde">⚙</button>
 
-  <div class="modal-overlay" id="modal-overlay" hidden>
-    <div class="modal">
-      <button class="modal-close" id="close-modal-btn" aria-label="Fermer">×</button>
-      <h2>Options &amp; sauvegarde</h2>
-      <p class="save-status" id="save-status"></p>
 
-      <label class="modal-field">
-        Code de sauvegarde
-        <textarea id="save-code" readonly rows="4"></textarea>
-      </label>
-      <button class="modal-btn" id="copy-code-btn">Copier le code</button>
 
-      <label class="modal-field">
-        Importer un code
-        <textarea id="import-code" rows="4" placeholder="Colle ton code ici"></textarea>
-      </label>
-      <button class="modal-btn" id="import-btn">Charger</button>
 
-      <button class="modal-btn danger" id="reset-btn">Réinitialiser la partie</button>
-    </div>
-  </div>
 
-  <div class="win-overlay" id="win-overlay" hidden>
-    <div class="win-message">
-      <h1>Le démon se dissout.</h1>
-      <p>Sa jauge de certitude est nulle : l'univers qu'il devait décrire est devenu trop lourd à tenir.</p>
-      <p class="win-sub">Tu peux continuer à plier, pour le plaisir du geste.</p>
-    </div>
-  </div>
 
-</div>
-<script src="script.js"></script>
+
+
+
+
+
+
+
 </body>
 </html>
