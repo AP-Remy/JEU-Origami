@@ -190,6 +190,21 @@
       <p id="entropie">0</p>
     </header>
 
+    <aside class="panneau-puzzle" id="panneau-puzzle" hidden>
+
+      <section class="panneau-section">
+        <div id="puzzle" class="puzzle-carte">
+          <div id="suite" class="puzzle-suite"></div>
+          <div class="puzzle-actions">
+            <input id="reponse" type="number" placeholder="ton nombre">
+            <button id="valider">Valider</button>
+          </div>
+          <p id="resultat" class="puzzle-resultat"></p>
+        </div>
+      </section>
+
+    </aside>
+
     <main class="aire-pliage">
       <button id="pliage" aria-label="Plier">
         <svg class="pliage-forme" viewBox="0 0 100 100">
@@ -216,6 +231,7 @@
     </aside>
 
   </div>
+
   <script src="puzzle.js"></script>
   <script src="script.js"></script>
 </body>

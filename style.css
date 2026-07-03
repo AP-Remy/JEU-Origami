@@ -39,14 +39,14 @@ body {
 
 .jeu {
   display: grid;
-  grid-template-columns: 1fr 460px;
+  grid-template-columns: 340px 1fr 460px;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "entete  entete"
-    "pliage  panneau";
+    "entete  entete  entete"
+    "puzzle  pliage  panneau";
   gap: 30px;
   width: 100%;
-  max-width: 1320px;
+  max-width: 1600px;
 }
 
 .entete {
@@ -116,6 +116,105 @@ body {
   font-size: 0.85em;
   letter-spacing: 0.05em;
 }
+
+/* --- Puzzle (colonne gauche) --- */
+
+.panneau-puzzle {
+  grid-area: puzzle;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+}
+
+.panneau-puzzle[hidden] {
+  display: none;
+}
+
+.puzzle-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--carte);
+}
+
+.puzzle-suite {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--texte);
+  background: var(--fond-doux);
+  border-radius: 8px;
+  padding: 16px 8px;
+}
+
+.puzzle-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.puzzle-actions input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--bordure);
+  background: var(--fond-doux);
+  color: var(--texte);
+  font: inherit;
+  font-size: 0.9em;
+}
+
+.puzzle-actions input:focus {
+  outline: none;
+  border-color: #93b4d655;
+}
+
+.puzzle-actions input::-webkit-outer-spin-button,
+.puzzle-actions input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.puzzle-actions input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.puzzle-actions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--bordure);
+  background: var(--carte-hover);
+  color: var(--texte);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: background 0.15s ease, filter 0.15s ease;
+}
+
+.puzzle-actions button:hover { filter: brightness(1.2); }
+
+.puzzle-actions button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  filter: none;
+}
+
+.puzzle-resultat {
+  margin: 0;
+  min-height: 1.2em;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--sauge);
+}
+
 
 /* --- Panneau latéral --- */
 
@@ -393,11 +492,12 @@ body {
 
 /* --- Petits écrans --- */
 
-@media (max-width: 760px) {
+@media (max-width: 1020px) {
   .jeu {
     grid-template-columns: 1fr;
     grid-template-areas:
       "entete"
+      "puzzle"
       "pliage"
       "panneau";
   }

@@ -38,6 +38,8 @@ const PLIEUSES = [
 const UPGRADES = [
   { id: "souple",      nom: "Papier souple",        cout: 15,        desc: "Double l'entropie de chaque clic",
     effet: { cible: "clic", type: "mult", valeur: 2 } },
+  { id: "devinette",   nom: "Le compte est bon",    cout: 250,       desc: "Débloque le mini-jeu : devine le nombre manquant de la suite",
+    effet: { cible: "puzzle", type: "unlock", valeur: 1 } },
   { id: "graisse",     nom: "Graissage des machines", cout: 300,     desc: "Double la cadence des plieuses automatiques",
     effet: { cible: "auto", type: "mult", valeur: 2 } },
   { id: "pianiste",    nom: "Doigts de pianiste",   cout: 500,       desc: "Double encore l'entropie de chaque clic",
@@ -389,8 +391,16 @@ function formaterEntropie(n) {
 
 const RANGS_VISIBLES_AVANCE = 1;   // nb de plieuses non achetées montrées après la dernière achetée
 
+const elPanneauPuzzle = document.getElementById("panneau-puzzle");
+const elValiderPuzzle = document.getElementById("valider");
+
 function afficher() {
   elEntropie.textContent = formaterEntropie(etat.entropie);
+
+  elPanneauPuzzle.hidden = !etat.upgrades.includes("devinette");
+  if (!elPanneauPuzzle.hidden) {
+    elValiderPuzzle.textContent = "-" + formaterNombre(coutTentativePuzzle(etat));
+  }
 
   let dernierRangPossede = -1;
   PLIEUSES.forEach((def, rang) => {
