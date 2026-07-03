@@ -15,6 +15,10 @@
 
 * { box-sizing: border-box; }
 
+html {
+  font-size: 120%;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -28,21 +32,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 28px;
 }
 
 /* --- Mise en page générale --- */
 
 .jeu {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 460px;
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "entete  entete"
     "pliage  panneau";
-  gap: 24px;
+  gap: 30px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1320px;
 }
 
 .entete {
@@ -88,7 +92,7 @@ body {
   border: none;
   padding: 0;
   cursor: pointer;
-  width: min(70%, 320px);
+  width: min(75%, 380px);
   filter: drop-shadow(0 0 26px #93b4d633);
   transition: transform 0.15s ease, filter 0.2s ease;
 }
@@ -160,11 +164,11 @@ body {
 .plieuse {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  padding: 10px 14px;
+  padding: 12px 16px;
   border: 1px solid var(--bordure);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--carte);
   color: var(--texte);
   cursor: pointer;
@@ -180,10 +184,10 @@ body {
 
 .plieuse:active { transform: scale(0.98); }
 
-.plieuse .icone { width: 36px; height: 36px; flex-shrink: 0; }
+.plieuse .icone { width: 56px; height: 56px; flex-shrink: 0; }
 .plieuse .infos { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.plieuse .nom  { font-weight: 600; font-size: 0.95em; }
-.plieuse .desc { font-size: 0.8em; color: var(--texte-doux); }
+.plieuse .nom  { font-weight: 600; font-size: 1em; }
+.plieuse .desc { font-size: 0.82em; color: var(--texte-doux); }
 .plieuse .chiffres {
   display: flex;
   flex-direction: column;
@@ -193,9 +197,9 @@ body {
   gap: 1px;
   flex-shrink: 0;
 }
-.plieuse .prix { font-weight: 600; color: var(--sauge); font-size: 0.9em; }
-.plieuse .quantite { font-size: 0.78em; color: var(--texte-doux); }
-.plieuse .prod { font-size: 0.78em; color: var(--bleu); }
+.plieuse .prix { font-weight: 600; color: var(--sauge); font-size: 0.92em; }
+.plieuse .quantite { font-size: 0.8em; color: var(--texte-doux); }
+.plieuse .prod { font-size: 0.8em; color: var(--bleu); }
 
 /* --- Cartes amélioration --- */
 
@@ -203,11 +207,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
-  padding: 10px 14px;
+  padding: 12px 16px;
   border: 1px solid var(--bordure);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--carte);
   color: var(--texte);
   cursor: pointer;
@@ -233,14 +237,27 @@ body {
   flex-shrink: 0;
 }
 
+/* --- Cartes indisponibles --- */
+
+.plieuse.indisponible,
+.upgrade.indisponible {
+  opacity: 0.4;
+  filter: grayscale(0.6);
+}
+
+.plieuse.indisponible:hover,
+.upgrade.indisponible:hover {
+  background: var(--carte);
+}
+
 /* --- Réglages --- */
 
 .reglages-bouton {
   position: fixed;
   top: 18px;
   right: 18px;
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: 1px solid var(--bordure);
   background: var(--carte);

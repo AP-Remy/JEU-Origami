@@ -9,16 +9,26 @@ const ENTROPIE_MAX = 1e104; // mort thermique = victoire
 //{ id,nom, coutBase,facteur, prod}
 
 const PLIEUSES = [
-  { id: "auto",        nom: "Plieuse automatique",   coutBase: 15,          facteur: 1.15, prod: 1,    icone: "icone_auto" },
-  { id: "miura",       nom: "Pli de Miura",          coutBase: 100,         facteur: 1.15, prod: 10,      icone: "icone_miura" },
-  { id: "usine",       nom: "Usine",                 coutBase: 1100,        facteur: 1.15, prod: 70,      icone: "icone_usine" },
-  { id: "recherche",   nom: "Centre de recherche",   coutBase: 12000,       facteur: 1.15, prod: 600,     icone: "icone_recherche" },
-  { id: "heighway",    nom: "Dragon de Heighway",    coutBase: 130000,      facteur: 1.15, prod: 5000,    icone: "icone_heighway" },
-  { id: "chaos",       nom: "Théorie du chaos",      coutBase: 1400000,     facteur: 1.15, prod: 10400,   icone: "icone_chaos" },
-  { id: "lorenz",      nom: "Attracteur de Lorenz",  coutBase: 20000000,    facteur: 1.15, prod: 700000,   icone: "icone_lorenz" },
-  { id: "schrodinger", nom: "Le Chat de Schrödinger",coutBase: 330000000,   facteur: 1.15, prod: 4400000,  icone: "icone_schrodinger" },
-  { id: "boltzmann",   nom: "Le Cerveau de Boltzmann",coutBase: 5100000000, facteur: 1.15, prod: 26000000, icone: "icone_boltzmann" },
-  { id: "whitehole",   nom: "White hole",            coutBase: 75000000000,facteur: 1.15, prod: 1600000000,icone: "icone_whitehole" },
+  { id: "mains",       nom: "Mains nues",                  coutBase: 15,                      facteur: 1.15, prod: 1,           icone: "icone_mains" },
+  { id: "auto",        nom: "Plieuse automatique",         coutBase: 100,                     facteur: 1.15, prod: 10,             icone: "icone_auto" },
+  { id: "miura",       nom: "Pli de Miura",                coutBase: 1100,                    facteur: 1.15, prod: 80,             icone: "icone_miura" },
+  { id: "usine",       nom: "Usine de pliage",             coutBase: 12000,                   facteur: 1.15, prod: 500,            icone: "icone_usine" },
+  { id: "heighway",    nom: "Dragon de Heighway",          coutBase: 130000,                  facteur: 1.15, prod: 2600,           icone: "icone_heighway" },
+  { id: "labo",        nom: "Centre de recherche",         coutBase: 1400000,                 facteur: 1.15, prod: 14000,          icone: "icone_labo" },
+  { id: "koch",        nom: "Flocon de Koch",              coutBase: 20000000,                facteur: 1.15, prod: 78000,          icone: "icone_koch" },
+  { id: "boulanger",   nom: "Transformation du boulanger", coutBase: 330000000,               facteur: 1.15, prod: 440000,         icone: "icone_boulanger" },
+  { id: "brownien",    nom: "Moteur brownien",             coutBase: 5100000000,              facteur: 1.15, prod: 2600000,        icone: "icone_brownien" },
+  { id: "joule",       nom: "Détente de Joule",            coutBase: 75000000000,             facteur: 1.15, prod: 16000000,       icone: "icone_joule" },
+  { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 1000000000000,           facteur: 1.15, prod: 100000000,      icone: "icone_lorenz" },
+  { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 14000000000000,          facteur: 1.15, prod: 650000000,      icone: "icone_landauer" },
+  { id: "turing",      nom: "Machine de Turing",           coutBase: 170000000000000,         facteur: 1.15, prod: 4300000000,     icone: "icone_turing" },
+  { id: "schrodinger", nom: "Chat de Schrödinger",         coutBase: 2100000000000000,        facteur: 1.15, prod: 29000000000,    icone: "icone_schrodinger" },
+  { id: "boltzmann",   nom: "Cerveau de Boltzmann",        coutBase: 26000000000000000,       facteur: 1.15, prod: 210000000000,   icone: "icone_boltzmann" },
+  { id: "hawking",     nom: "Rayonnement de Hawking",      coutBase: 310000000000000000,      facteur: 1.15, prod: 1500000000000,  icone: "icone_hawking" },
+  { id: "trounoir",    nom: "Trou noir",                   coutBase: 3900000000000000000,     facteur: 1.15, prod: 11000000000000, icone: "icone_trounoir" },
+  { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 48000000000000000000,    facteur: 1.15, prod: 83000000000000, icone: "icone_wormhole" },
+  { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 610000000000000000000,   facteur: 1.15, prod: 630000000000000, icone: "icone_hulivers" },
+  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1000000000000000000000000,  facteur: 1.15, prod: 5000000000000000, icone: "icone_mortthermique" },
 ];
 
 // --- Définition des upgrades ---
@@ -26,9 +36,36 @@ const PLIEUSES = [
 // { id,nom, cout, desc,effet:{ cible, type, valeur} }
 
 const UPGRADES = [
-  { id: "souple",   nom: "Papier souple", cout: 15, desc: "Double l'entropie de chaque clic" ,effet: { cible: "clic", type: "mult", valeur: 2 } },
-  { id: "graisse", nom: "Graissage des machine", cout: 50, desc: "Double la cadence de tous les producteurs",
-  effet: { cible: "auto", type: "mult", valeur: 2 } },
+  { id: "souple",      nom: "Papier souple",        cout: 15,        desc: "Double l'entropie de chaque clic",
+    effet: { cible: "clic", type: "mult", valeur: 2 } },
+  { id: "graisse",     nom: "Graissage des machines", cout: 300,     desc: "Double la cadence des plieuses automatiques",
+    effet: { cible: "auto", type: "mult", valeur: 2 } },
+  { id: "pianiste",    nom: "Doigts de pianiste",   cout: 500,       desc: "Double encore l'entropie de chaque clic",
+    effet: { cible: "clic", type: "mult", valeur: 2 } },
+  { id: "negentropie", nom: "Néguentropie",         cout: 100000,    desc: "Ordonne le chaos : -5 par clic",
+    effet: { cible: "clic", type: "add", valeur: -5 } },
+  { id: "souffle",     nom: "Souffle du dragon",    cout: 320000,    desc: "Double la production du Dragon de Heighway",
+    effet: { cible: "heighway", type: "mult", valeur: 2 } },
+  { id: "millegrues",  nom: "Un voeux de mille grues", cout: 50000,   desc: "x1000 sur l'entropie de chaque clic",
+    effet: { cible: "clic", type: "mult", valeur: 1000 } },
+  { id: "maekawa",     nom: "Théorème de Maekawa",  cout: 200000,   desc: "Un pli net vaut deux brouillons : double le clic",
+    effet: { cible: "clic", type: "mult", valeur: 2 } },
+  { id: "fleche",      nom: "Flèche du temps",      cout: 10000000,  desc: "Le temps ne recule pas : double toute la production",
+    effet: { cible: "production", type: "mult", valeur: 2 } },
+  { id: "secondprincipe", nom: "Second principe", cout: 20000000000000,  desc: "La loi qui gouverne tout : double le clic et la production",
+    effet: { cible: "global", type: "mult", valeur: 2 } },
+  { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : double Lorenz",
+    effet: { cible: "lorenz", type: "mult", valeur: 2 } },
+  { id: "arret",       nom: "Problème de l'arrêt",  cout: 250000000000000, desc: "Elle ne s'arrête jamais : double la Machine de Turing",
+    effet: { cible: "turing", type: "mult", valeur: 2 } },
+  { id: "holographie", nom: "Principe holographique", cout: 3000000000, desc: "Toute l'information sur la surface : double toute la production",
+    effet: { cible: "production", type: "mult", valeur: 2 } },
+  { id: "horizon",     nom: "Horizon des évènements", cout: 8000000000000000000, desc: "Double la production du Trou noir",
+    effet: { cible: "trounoir", type: "mult", valeur: 2 } },
+  { id: "bigbang",     nom: "Big Bang",             cout: 120000000000000000000, desc: "Le grand commencement : triple le clic et la production",
+    effet: { cible: "global", type: "mult", valeur: 3 } },
+  { id: "ignorance",   nom: "Ignorance du démon",   cout: 8000000000000000000000, desc: "Moins Laplace comprend : triple toute la production",
+    effet: { cible: "production", type: "mult", valeur: 3 } },
 ];
 
 
@@ -271,7 +308,7 @@ function construireUpgrades() {
         <span class="nom">${def.nom}</span>
         <span class="desc">${def.desc ?? ""}</span>
       </div>
-      <span class="prix">${def.cout}</span>`;
+      <span class="prix">${formaterNombre(def.cout)}</span>`;
 
     carte.addEventListener("click", function () {
       acheterUpgrade(etat, def.id);
@@ -323,26 +360,72 @@ const elEntropie = document.getElementById("entropie");
 const elPliage   = document.getElementById("pliage");
 
 
-function afficher() {
-  elEntropie.textContent = Math.floor(etat.entropie);
+// --- Formatage des nombres ---
 
-  for (const def of PLIEUSES) {
+const PALIERS_NOMBRE = [
+  { seuil: 1e9, symbole: "T" },
+  { seuil: 1e6, symbole: "M" },
+  { seuil: 1e3, symbole: "k" },
+];
+
+function formaterNombre(n) {
+  const signe = n < 0 ? "-" : "";
+  n = Math.abs(n);
+
+  if (n >= 1e12) {
+    return signe + n.toExponential(2).replace("e+", "e");
+  }
+  const palier = PALIERS_NOMBRE.find(p => n >= p.seuil);
+  if (palier) {
+    return signe + (n / palier.seuil).toFixed(2).replace(/\.?0+$/, "") + palier.symbole;
+  }
+  return signe + (Number.isInteger(n) ? n.toString() : n.toFixed(2).replace(/\.?0+$/, ""));
+}
+
+function formaterEntropie(n) {
+  return Math.floor(Math.max(n, 0)).toLocaleString("fr-FR");
+}
+
+
+const RANGS_VISIBLES_AVANCE = 1;   // nb de plieuses non achetées montrées après la dernière achetée
+
+function afficher() {
+  elEntropie.textContent = formaterEntropie(etat.entropie);
+
+  let dernierRangPossede = -1;
+  PLIEUSES.forEach((def, rang) => {
+    if (etat.plieuses[def.id] > 0) dernierRangPossede = rang;
+  });
+
+  PLIEUSES.forEach((def, rang) => {
     const carte = elBoutique.querySelector(`[data-id="${def.id}"]`);
     const quantite = etat.plieuses[def.id];
     const prix = def.coutBase * def.facteur ** quantite;
 
-    carte.querySelector(".prix").textContent = Math.ceil(prix);
-    carte.querySelector(".prod").textContent = def.prod;
-    carte.querySelector(".quantite").textContent = "×" + quantite;
-  }
-  for (const def of UPGRADES) {
+    carte.querySelector(".prix").textContent = formaterNombre(Math.ceil(prix));
+    carte.querySelector(".prod").textContent = formaterNombre(def.prod);
+    carte.querySelector(".quantite").textContent = "×" + formaterNombre(quantite);
+
+    carte.classList.toggle("indisponible", etat.entropie < prix);
+    carte.style.display = rang > dernierRangPossede + RANGS_VISIBLES_AVANCE ? "none" : "";
+  });
+
+  let dernierRangUpgradePossede = -1;
+  UPGRADES.forEach((def, rang) => {
+    if (etat.upgrades.includes(def.id)) dernierRangUpgradePossede = rang;
+  });
+
+  UPGRADES.forEach((def, rang) => {
     const carte = elUpgrades.querySelector(`[data-id="${def.id}"]`);
     if (etat.upgrades.includes(def.id)) {
       carte.style.display = "none";     // possédé -> on cache la carte
+    } else if (rang > dernierRangUpgradePossede + 2) {
+      carte.style.display = "none";     // trop loin -> pas encore révélé
     } else {
-      carte.style.display = "";         // pas encore -> on la montre
+      carte.style.display = "";         // à portée -> on la montre
+      carte.classList.toggle("indisponible", etat.entropie < def.cout);
     }
-  }
+  });
 }
 
 
