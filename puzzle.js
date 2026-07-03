@@ -1,11 +1,11 @@
 // dans script.js — le pont entre puzzle et moteur
 function coutTentativePuzzle(etat) {
-  return productionTotale(etat) * 15;
+  return Math.floor(productionTotale(etat) * 13);
 }
 
 function recompenserPuzzle(score) {
   const secondes = 20;
-  const bonus = productionTotale(etat) * secondes * (score / 100);
+  const bonus = Math.floor(productionTotale(etat) * secondes * (score / 100));
   etat.entropie = etat.entropie + bonus;
   afficher();
   return bonus;
@@ -114,8 +114,10 @@ function evaluer(candidat, suite, voisinGauche, voisinDroit) {
     const chiffresCandidat = String(candidat);
     const chiffresN = String(n);
     for (const c of chiffresCandidat) {
-      if (chiffresN.includes(c)) {
-        score = score - 10;    // chaque chiffre partagé enleve 5
+      for (const cn of chiffresN) {
+        if (cn === c) {
+          score = score - 10;    // chaque occurrence partagée compte, pas juste une par chiffre
+        }
       }
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -187,7 +187,10 @@
 
     <header class="entete">
       <span class="entete-label">Entropie</span>
-      <p id="entropie">0</p>
+      <div class="entete-ligne">
+        <p id="entropie">0</p>
+        <span id="entropie-taux" class="entropie-taux" hidden></span>
+      </div>
     </header>
 
     <aside class="panneau-puzzle" id="panneau-puzzle" hidden>
@@ -196,7 +199,7 @@
         <div id="puzzle" class="puzzle-carte">
           <div id="suite" class="puzzle-suite"></div>
           <div class="puzzle-actions">
-            <input id="reponse" type="number" placeholder="ton nombre">
+            <input id="reponse" type="number" placeholder="Graine du Chaos">
             <button id="valider">Valider</button>
           </div>
           <p id="resultat" class="puzzle-resultat"></p>
@@ -213,17 +216,17 @@
           <polygon points="50,50 94,50 50,94" class="face face-c"/>
         </svg>
       </button>
-      <p class="aire-pliage-note">Cliquer pour plier</p>
+      <p id="aire-pliage-note" class="aire-pliage-note">Cliquer pour plier</p>
     </main>
 
-    <aside class="panneau">
+    <aside class="panneau" id="panneau-plieuses" hidden>
 
       <section class="panneau-section">
-        <h2>Maxwell's Demon Shop</h2>
+        <h2>Machines de Maxwell</h2>
         <div id="boutique"></div>
       </section>
 
-      <section class="panneau-section">
+      <section class="panneau-section" id="section-ameliorations" hidden>
         <h2>Améliorations</h2>
         <div id="upgrades"></div>
       </section>

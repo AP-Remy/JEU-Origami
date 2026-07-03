@@ -12,23 +12,23 @@ const PLIEUSES = [
   { id: "mains",       nom: "Mains nues",                  coutBase: 15,                      facteur: 1.15, prod: 1,           icone: "icone_mains" },
   { id: "auto",        nom: "Plieuse automatique",         coutBase: 100,                     facteur: 1.15, prod: 10,             icone: "icone_auto" },
   { id: "miura",       nom: "Pli de Miura",                coutBase: 1100,                    facteur: 1.15, prod: 80,             icone: "icone_miura" },
-  { id: "usine",       nom: "Usine de pliage",             coutBase: 12000,                   facteur: 1.15, prod: 500,            icone: "icone_usine" },
+  { id: "usine",       nom: "Usine de pliage",             coutBase: 12000,                   facteur: 1.15, prod: 1000,            icone: "icone_usine" },
   { id: "heighway",    nom: "Dragon de Heighway",          coutBase: 130000,                  facteur: 1.15, prod: 2600,           icone: "icone_heighway" },
   { id: "labo",        nom: "Centre de recherche",         coutBase: 1400000,                 facteur: 1.15, prod: 14000,          icone: "icone_labo" },
   { id: "koch",        nom: "Flocon de Koch",              coutBase: 20000000,                facteur: 1.15, prod: 78000,          icone: "icone_koch" },
-  { id: "boulanger",   nom: "Transformation du boulanger", coutBase: 330000000,               facteur: 1.15, prod: 440000,         icone: "icone_boulanger" },
-  { id: "brownien",    nom: "Moteur brownien",             coutBase: 5100000000,              facteur: 1.15, prod: 2600000,        icone: "icone_brownien" },
-  { id: "joule",       nom: "Détente de Joule",            coutBase: 75000000000,             facteur: 1.15, prod: 16000000,       icone: "icone_joule" },
-  { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 1000000000000,           facteur: 1.15, prod: 100000000,      icone: "icone_lorenz" },
-  { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 14000000000000,          facteur: 1.15, prod: 650000000,      icone: "icone_landauer" },
-  { id: "turing",      nom: "Machine de Turing",           coutBase: 170000000000000,         facteur: 1.15, prod: 4300000000,     icone: "icone_turing" },
-  { id: "schrodinger", nom: "Chat de Schrödinger",         coutBase: 2100000000000000,        facteur: 1.15, prod: 29000000000,    icone: "icone_schrodinger" },
-  { id: "boltzmann",   nom: "Cerveau de Boltzmann",        coutBase: 26000000000000000,       facteur: 1.15, prod: 210000000000,   icone: "icone_boltzmann" },
-  { id: "hawking",     nom: "Rayonnement de Hawking",      coutBase: 310000000000000000,      facteur: 1.15, prod: 1500000000000,  icone: "icone_hawking" },
-  { id: "trounoir",    nom: "Trou noir",                   coutBase: 3900000000000000000,     facteur: 1.15, prod: 11000000000000, icone: "icone_trounoir" },
-  { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 48000000000000000000,    facteur: 1.15, prod: 83000000000000, icone: "icone_wormhole" },
-  { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 610000000000000000000,   facteur: 1.15, prod: 630000000000000, icone: "icone_hulivers" },
-  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1000000000000000000000000,  facteur: 1.15, prod: 5000000000000000, icone: "icone_mortthermique" },
+  { id: "boulanger",   nom: "Transformation du boulanger", coutBase: 330000000,               facteur: 1.15, prod: 1100000,         icone: "icone_boulanger" },
+  { id: "brownien",    nom: "Moteur brownien",             coutBase: 5100000000,              facteur: 1.15, prod: 15000000,        icone: "icone_brownien" },
+  { id: "joule",       nom: "Détente de Joule",            coutBase: 75000000000,             facteur: 1.15, prod: 200000000,       icone: "icone_joule" },
+  { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 1000000000000,           facteur: 1.15, prod: 3000000000,      icone: "icone_lorenz" },
+  { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 14000000000000,          facteur: 1.15, prod: 40000000000,      icone: "icone_landauer" },
+  { id: "turing",      nom: "Machine de Turing",           coutBase: 170000000000000,         facteur: 1.15, prod: 500000000000,     icone: "icone_turing" },
+  { id: "schrodinger", nom: "Chat de Schrödinger",         coutBase: 2100000000000000,        facteur: 1.15, prod: 7000000000000,    icone: "icone_schrodinger" },
+  { id: "boltzmann",   nom: "Cerveau de Boltzmann",        coutBase: 26000000000000000,       facteur: 1.15, prod: 75000000000000,   icone: "icone_boltzmann" },
+  { id: "hawking",     nom: "Rayonnement de Hawking",      coutBase: 300000000000000000,      facteur: 1.15, prod: 1000000000000000,  icone: "icone_hawking" },
+  { id: "trounoir",    nom: "Trou noir",                   coutBase: 4200000000000000000,     facteur: 1.15, prod: 12000000000000000, icone: "icone_trounoir" },
+  { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 48000000000000000000,    facteur: 1.15, prod: 120000000000000000, icone: "icone_wormhole" },
+  { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 610000000000000000000,   facteur: 1.15, prod: 1000000000000000000, icone: "icone_hulivers" },
+  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1000000000000000000000000,  facteur: 1.15, prod: 1000000000000000000000000, icone: "icone_mortthermique" },
 ];
 
 // --- Définition des upgrades ---
@@ -36,24 +36,28 @@ const PLIEUSES = [
 // { id,nom, cout, desc,effet:{ cible, type, valeur} }
 
 const UPGRADES = [
-  { id: "souple",      nom: "Papier souple",        cout: 15,        desc: "Double l'entropie de chaque clic",
-    effet: { cible: "clic", type: "mult", valeur: 2 } },
-  { id: "devinette",   nom: "Le compte est bon",    cout: 250,       desc: "Débloque le mini-jeu : devine le nombre manquant de la suite",
-    effet: { cible: "puzzle", type: "unlock", valeur: 1 } },
-  { id: "graisse",     nom: "Graissage des machines", cout: 300,     desc: "Double la cadence des plieuses automatiques",
+  { id: "souple",      nom: "Papier souple",        cout: 15,        desc: "Double l'entropie de chaque clic et la production des Mains nues",
+    effet: { cible: "clic+mains", type: "mult", valeur: 2 } },
+  { id: "graisse",     nom: "Graissage des machines", cout: 300,     desc: "+ 100% de cadence des plieuses automatiques",
     effet: { cible: "auto", type: "mult", valeur: 2 } },
   { id: "pianiste",    nom: "Doigts de pianiste",   cout: 500,       desc: "Double encore l'entropie de chaque clic",
     effet: { cible: "clic", type: "mult", valeur: 2 } },
-  { id: "negentropie", nom: "Néguentropie",         cout: 100000,    desc: "Ordonne le chaos : -5 par clic",
-    effet: { cible: "clic", type: "add", valeur: -5 } },
+  { id: "negentropie", nom: "Néguentropie",         cout: 100000,    desc: "Ordonne le chaos : -2 par clic",
+    effet: { cible: "clic", type: "add", valeur: -2 } },
+  { id: "devinette",   nom: "Engendrer le chaos",    cout: 100000,       desc: "On parie ?",
+    effet: { cible: "puzzle", type: "unlock", valeur: 1 } },
+  { id: "petitschinois", nom: "Les petits chinois",  cout: 25000,    desc: " + 50% de cadence dans les usines ",
+    effet: { cible: "usine", type: "mult", valeur: 1.5 } },
   { id: "souffle",     nom: "Souffle du dragon",    cout: 320000,    desc: "Double la production du Dragon de Heighway",
     effet: { cible: "heighway", type: "mult", valeur: 2 } },
-  { id: "millegrues",  nom: "Un voeux de mille grues", cout: 50000,   desc: "x1000 sur l'entropie de chaque clic",
+  { id: "millegrues",  nom: "Un voeux de mille grues", cout: 100000,   desc: "x1000 sur l'entropie de chaque clic",
     effet: { cible: "clic", type: "mult", valeur: 1000 } },
   { id: "maekawa",     nom: "Théorème de Maekawa",  cout: 200000,   desc: "Un pli net vaut deux brouillons : double le clic",
     effet: { cible: "clic", type: "mult", valeur: 2 } },
   { id: "fleche",      nom: "Flèche du temps",      cout: 10000000,  desc: "Le temps ne recule pas : double toute la production",
     effet: { cible: "production", type: "mult", valeur: 2 } },
+  { id: "nothing",      nom: "Rien n'est gratuit",      cout: 0,  desc: "Ne fait rien, ou presque",
+    effet: { cible: "production", type: "mult", valeur: 1 } },
   { id: "secondprincipe", nom: "Second principe", cout: 20000000000000,  desc: "La loi qui gouverne tout : double le clic et la production",
     effet: { cible: "global", type: "mult", valeur: 2 } },
   { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : double Lorenz",
@@ -77,12 +81,17 @@ const UPGRADES = [
 
 
 
+function cibleInclut(cible, ...noms) {              // une cible peut viser plusieurs id, ex: "clic+mains"
+  const cibles = cible.split("+");
+  return noms.some(nom => cibles.includes(nom));
+}
+
 function up_add(def) {                              // upgrades additives
   let somme = 0;
   for (const idUpgrade of etat.upgrades) {
     const up = UPGRADES.find(u => u.id === idUpgrade);
     const effet = up.effet;
-    if (effet.cible !== def.id) continue;
+    if (!cibleInclut(effet.cible, def.id, "production", "global")) continue;
     if (effet.type !== "add") continue;
     somme = somme + effet.valeur;
   }
@@ -94,7 +103,7 @@ function up_mult(def) {                               // upgrades multiplicative
   for (const idUpgrade of etat.upgrades) {
     const up = UPGRADES.find(u => u.id === idUpgrade);
     const effet = up.effet;
-    if (effet.cible !== def.id) continue;
+    if (!cibleInclut(effet.cible, def.id, "production", "global")) continue;
     if (effet.type !== "mult") continue;
     produit = produit * effet.valeur;
   }
@@ -121,7 +130,7 @@ function production_par_clic(etat) {
   for (const idUpgrade of etat.upgrades) {
     const up = UPGRADES.find(u => u.id === idUpgrade);
     const effet = up.effet;
-    if (effet.cible !== "clic") continue;
+    if (!cibleInclut(effet.cible, "clic", "global")) continue;
     if (effet.type === "add")  add  = add  + effet.valeur;
     if (effet.type === "mult") mult = mult * effet.valeur;
   }
@@ -188,6 +197,9 @@ function etatVersSauvegarde(etat) {
     entropie: etat.entropie,
     plieuses: etat.plieuses,
     upgrades: etat.upgrades,
+    boutiqueDebloquee: etat.boutiqueDebloquee,
+    ameliorationsDebloquees: etat.ameliorationsDebloquees,
+    tauxDebloque: etat.tauxDebloque,
   };
 }
 
@@ -201,6 +213,9 @@ function appliquerSauvegarde(etat, sauvegarde) {
     etat.plieuses[def.id] = sauvegarde.plieuses?.[def.id] ?? 0;
   }
   etat.upgrades = (sauvegarde.upgrades ?? []).filter(id => UPGRADES.some(u => u.id === id));
+  etat.boutiqueDebloquee = sauvegarde.boutiqueDebloquee ?? false;
+  etat.ameliorationsDebloquees = sauvegarde.ameliorationsDebloquees ?? false;
+  etat.tauxDebloque = sauvegarde.tauxDebloque ?? false;
   return true;
 }
 
@@ -335,12 +350,19 @@ function construireUpgrades() {
 
 
 
+const SEUIL_BOUTIQUE      = 15;    // entropie à atteindre pour révéler les plieuses
+const SEUIL_AMELIORATIONS = 50;    // entropie à atteindre pour révéler les améliorations
+const SEUIL_TAUX          = 1000;  // entropie à atteindre pour révéler l'entropie/seconde
+
 function etatInitial() {
   return {
     entropie: 0,        // entropie — la monnaie, chez Maxwell
     parClic: 1,         // entropie gagnée par pli manuel
     plieuses: Object.fromEntries(PLIEUSES.map(p => [p.id, 0])),   // les plieuses possédées {id, quantité}
-    upgrades: []        // les upgrades possédées
+    upgrades: [],        // les upgrades possédées
+    boutiqueDebloquee: false,       // reste vrai une fois atteint, même si on dépense sous le seuil
+    ameliorationsDebloquees: false,
+    tauxDebloque: false,
   };
 }
 let etat = etatInitial()
@@ -391,15 +413,37 @@ function formaterEntropie(n) {
 
 const RANGS_VISIBLES_AVANCE = 1;   // nb de plieuses non achetées montrées après la dernière achetée
 
-const elPanneauPuzzle = document.getElementById("panneau-puzzle");
-const elValiderPuzzle = document.getElementById("valider");
+const elJeu               = document.querySelector(".jeu");
+const elPanneauPuzzle     = document.getElementById("panneau-puzzle");
+const elPanneauPlieuses   = document.getElementById("panneau-plieuses");
+const elSectionAmeliorations = document.getElementById("section-ameliorations");
+const elValiderPuzzle     = document.getElementById("valider");
+const elEntropieTaux      = document.getElementById("entropie-taux");
+const elAirePliageNote    = document.getElementById("aire-pliage-note");
 
 function afficher() {
   elEntropie.textContent = formaterEntropie(etat.entropie);
 
+  if (etat.entropie >= SEUIL_BOUTIQUE) etat.boutiqueDebloquee = true;
+  if (etat.entropie >= SEUIL_AMELIORATIONS) etat.ameliorationsDebloquees = true;
+  if (etat.entropie >= SEUIL_TAUX) etat.tauxDebloque = true;
+
+  elEntropieTaux.hidden = !etat.tauxDebloque;
+  if (!elEntropieTaux.hidden) {
+    elEntropieTaux.textContent = "+" + formaterNombre(productionTotale(etat)) + "/s";
+  }
+
+  elAirePliageNote.hidden = etat.boutiqueDebloquee;
+
+  elPanneauPlieuses.hidden = !etat.boutiqueDebloquee;
+  elSectionAmeliorations.hidden = !etat.ameliorationsDebloquees;
   elPanneauPuzzle.hidden = !etat.upgrades.includes("devinette");
+
+  elJeu.classList.toggle("sans-puzzle", elPanneauPuzzle.hidden);
+  elJeu.classList.toggle("sans-panneau", elPanneauPlieuses.hidden);
+
   if (!elPanneauPuzzle.hidden) {
-    elValiderPuzzle.textContent = "-" + formaterNombre(coutTentativePuzzle(etat));
+    elValiderPuzzle.textContent = "-" + Math.floor(coutTentativePuzzle(etat)).toLocaleString("fr-FR");
   }
 
   let dernierRangPossede = -1;

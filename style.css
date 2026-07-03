@@ -26,7 +26,7 @@ html, body {
 
 body {
   font-family: "Segoe UI", system-ui, sans-serif;
-  background: radial-gradient(circle at 30% 20%, var(--fond-doux), var(--fond) 70%);
+  background: radial-gradient(circle at 50% 50%, var(--fond-doux), var(--fond) 70%);
   color: var(--texte);
   min-height: 100vh;
   display: flex;
@@ -49,6 +49,27 @@ body {
   max-width: 1600px;
 }
 
+.jeu.sans-puzzle {
+  grid-template-columns: 1fr 460px;
+  grid-template-areas:
+    "entete  entete"
+    "pliage  panneau";
+}
+
+.jeu.sans-panneau {
+  grid-template-columns: 340px 1fr;
+  grid-template-areas:
+    "entete  entete"
+    "puzzle  pliage";
+}
+
+.jeu.sans-puzzle.sans-panneau {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "entete"
+    "pliage";
+}
+
 .entete {
   grid-area: entete;
   text-align: center;
@@ -65,15 +86,27 @@ body {
   color: var(--texte-doux);
 }
 
+.entete-ligne {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
 #entropie {
   margin: 0;
   font-size: 2.6em;
-  font-weight: 300;
-  letter-spacing: 0.03em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   background: linear-gradient(90deg, var(--lavande), var(--bleu));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.entropie-taux {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--sauge);
 }
 
 /* --- Zone de pliage centrale --- */
@@ -93,23 +126,24 @@ body {
   padding: 0;
   cursor: pointer;
   width: min(75%, 380px);
-  filter: drop-shadow(0 0 26px #93b4d633);
   transition: transform 0.15s ease, filter 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
 #pliage:hover {
-  filter: drop-shadow(0 0 38px #b4a3d655);
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
 #pliage:active {
-  transform: scale(0.94);
+  transform: scale(0.99);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
 }
 
 .pliage-forme { width: 100%; height: auto; }
 
-.pliage-forme .face-a { fill: var(--carte); stroke: var(--bordure); stroke-width: 0.5; }
-.pliage-forme .face-b { fill: var(--lavande); opacity: 0.85; }
-.pliage-forme .face-c { fill: var(--bleu); opacity: 0.7; }
+.pliage-forme .face-a { fill: #2a4770; stroke: var(--bordure); stroke-width: 0.5; }
+.pliage-forme .face-b { fill: var(--bleu); opacity: 0.9; }
+.pliage-forme .face-c { fill: #4c76ad; opacity: 0.8; }
 
 .aire-pliage-note {
   color: var(--texte-doux);
@@ -226,10 +260,18 @@ body {
   min-height: 0;
 }
 
+.panneau[hidden] {
+  display: none;
+}
+
 .panneau-section {
   display: flex;
   flex-direction: column;
   min-height: 0;
+}
+
+.panneau-section[hidden] {
+  display: none;
 }
 
 .panneau-section h2 {
