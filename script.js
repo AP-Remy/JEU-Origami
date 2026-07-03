@@ -42,8 +42,8 @@ const UPGRADES = [
     effet: { cible: "auto", type: "mult", valeur: 2 } },
   { id: "pianiste",    nom: "Doigts de pianiste",   cout: 500,       desc: "Double encore l'entropie de chaque clic",
     effet: { cible: "clic", type: "mult", valeur: 2 } },
-  { id: "negentropie", nom: "Néguentropie",         cout: 100000,    desc: "Ordonne le chaos : -2 par clic",
-    effet: { cible: "clic", type: "add", valeur: -2 } },
+  { id: "negentropie", nom: "Néguentropie",         cout: 100000,    desc: "Ordonne le chaos : Réduit la force du clic",
+    effet: { cible: "clic", type: "mult", valeur: 0.9} },
   { id: "devinette",   nom: "Engendrer le chaos",    cout: 100000,       desc: "On parie ?",
     effet: { cible: "puzzle", type: "unlock", valeur: 1 } },
   { id: "petitschinois", nom: "Les petits chinois",  cout: 25000,    desc: " + 50% de cadence dans les usines ",
@@ -58,6 +58,12 @@ const UPGRADES = [
     effet: { cible: "production", type: "mult", valeur: 2 } },
   { id: "nothing",      nom: "Rien n'est gratuit",      cout: 0,  desc: "Ne fait rien, ou presque",
     effet: { cible: "production", type: "mult", valeur: 1 } },
+  { id: "neige", nom: "Il neige !", cout: 150000000,  desc: "Des flocons partout",
+    effet: { cible: "koch", type: "mult", valeur: 3 } },
+
+
+
+    
   { id: "secondprincipe", nom: "Second principe", cout: 20000000000000,  desc: "La loi qui gouverne tout : double le clic et la production",
     effet: { cible: "global", type: "mult", valeur: 2 } },
   { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : double Lorenz",

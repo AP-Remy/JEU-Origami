@@ -4,7 +4,7 @@ function coutTentativePuzzle(etat) {
 }
 
 function recompenserPuzzle(score) {
-  const secondes = 20;
+  const secondes = 25;
   const bonus = Math.floor(productionTotale(etat) * secondes * (score / 100));
   etat.entropie = etat.entropie + bonus;
   afficher();
