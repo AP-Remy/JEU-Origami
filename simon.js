@@ -1,11 +1,12 @@
 // dans script.js — le pont entre simon et le moteur
 
-const SIMON_LONGUEURS   = [4, 5, 6];  // longueur de chaque manche successive
-const SIMON_COTES       = ["haut", "droite", "bas", "gauche"];
-const SIMON_COOLDOWN_MS = 30000;
-const SIMON_BUFF_MS     = 10000;
-const SIMON_DELAI_FLASH = 500;
-const SIMON_DELAI_PAUSE = 250;
+const SIMON_LONGUEURS    = [4, 5, 6];  // longueur de chaque manche successive
+const SIMON_COTES        = ["haut", "droite", "bas", "gauche"];
+const SIMON_COOLDOWN_MS  = 30000;
+const SIMON_BUFF_MS      = 10000;
+const SIMON_DELAI_FLASH  = 500;
+const SIMON_DELAI_PAUSE  = 250;
+const SIMON_DELAI_MANCHE = 2000;   // pause entre deux manches réussies
 
 const elSimonCarte    = document.getElementById("simon");
 const elSimonLancer   = document.getElementById("simon-lancer");
@@ -64,7 +65,7 @@ async function simonLancerManche() {
   await simonDemarrerManche();
 }
 
-function simonClicCote(cote) {
+async function simonClicCote(cote) {
   if (!simonSaisieActive) return;
 
   simonEclairerCote(cote, 200);
@@ -84,6 +85,7 @@ function simonClicCote(cote) {
       simonTerminerJeu(true);
     } else {
       simonManche = simonManche + 1;
+      await simonAttendre(SIMON_DELAI_MANCHE);
       simonDemarrerManche();
     }
   }
@@ -94,7 +96,7 @@ function simonTerminerJeu(victoire) {
     etat.buffProductionJusqua = Date.now() + SIMON_BUFF_MS;
     elSimonResultat.textContent = "Trois manches réussies ! Production doublée pendant 10s.";
   } else {
-    elSimonResultat.textContent = "Laplace gagne";
+    elSimonResultat.textContent = "";
   }
 
   afficher();
