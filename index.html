@@ -206,6 +206,19 @@
         </div>
       </section>
 
+      <section class="panneau-section" id="section-simon" hidden>
+        <div id="simon" class="simon-carte">
+          <svg id="simon-feuille" class="simon-feuille" viewBox="0 0 100 100">
+            <polygon class="simon-cote" data-cote="haut"   points="50,6 94,50 50,50"/>
+            <polygon class="simon-cote" data-cote="droite" points="94,50 50,94 50,50"/>
+            <polygon class="simon-cote" data-cote="bas"    points="50,94 6,50 50,50"/>
+            <polygon class="simon-cote" data-cote="gauche" points="6,50 50,6 50,50"/>
+          </svg>
+          <button id="simon-lancer" class="simon-lancer">Lancer une manche</button>
+          <p id="simon-resultat" class="simon-resultat"></p>
+        </div>
+      </section>
+
     </aside>
 
     <main class="aire-pliage">
@@ -237,6 +250,7 @@
   </div>
 
   <script src="puzzle.js"></script>
+  <script src="simon.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

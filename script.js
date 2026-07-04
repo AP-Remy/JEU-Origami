@@ -19,16 +19,16 @@ const PLIEUSES = [
   { id: "boulanger",   nom: "Transformation du boulanger", coutBase: 330000000,               facteur: 1.15, prod: 1100000,         icone: "icone_boulanger" },
   { id: "brownien",    nom: "Moteur brownien",             coutBase: 5000000000,              facteur: 1.15, prod: 15000000,        icone: "icone_brownien" },
   { id: "joule",       nom: "Détente de Joule",            coutBase: 50000000000,             facteur: 1.15, prod: 200000000,       icone: "icone_joule" },
-  { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 1000000000000,           facteur: 1.15, prod: 3000000000,      icone: "icone_lorenz" },
-  { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 14000000000000,          facteur: 1.15, prod: 40000000000,      icone: "icone_landauer" },
-  { id: "turing",      nom: "Machine de Turing",           coutBase: 170000000000000,         facteur: 1.15, prod: 500000000000,     icone: "icone_turing" },
-  { id: "schrodinger", nom: "Chat de Schrödinger",         coutBase: 2100000000000000,        facteur: 1.15, prod: 7000000000000,    icone: "icone_schrodinger" },
-  { id: "boltzmann",   nom: "Cerveau de Boltzmann",        coutBase: 26000000000000000,       facteur: 1.15, prod: 75000000000000,   icone: "icone_boltzmann" },
-  { id: "hawking",     nom: "Rayonnement de Hawking",      coutBase: 300000000000000000,      facteur: 1.15, prod: 1000000000000000,  icone: "icone_hawking" },
-  { id: "trounoir",    nom: "Trou noir",                   coutBase: 4200000000000000000,     facteur: 1.15, prod: 12000000000000000, icone: "icone_trounoir" },
-  { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 48000000000000000000,    facteur: 1.15, prod: 120000000000000000, icone: "icone_wormhole" },
-  { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 610000000000000000000,   facteur: 1.15, prod: 1000000000000000000, icone: "icone_hulivers" },
-  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1000000000000000000000000,  facteur: 1.15, prod: 1000000000000000000000000, icone: "icone_mortthermique" },
+  { id: "lorenz",      nom: "Attracteur de Lorenz",        coutBase: 300000000000,           facteur: 1.15, prod: 1000000000,      icone: "icone_lorenz" },
+  { id: "landauer",    nom: "Effaceur de Landauer",        coutBase: 1400000000000,          facteur: 1.15, prod: 4000000000,      icone: "icone_landauer" },
+  { id: "turing",      nom: "Machine de Turing",           coutBase: 17000000000000,         facteur: 1.15, prod: 50000000000,     icone: "icone_turing" },
+  { id: "schrodinger", nom: "Chat de Schrödinger",         coutBase: 210000000000000,        facteur: 1.15, prod: 700000000000,    icone: "icone_schrodinger" },
+  { id: "boltzmann",   nom: "Cerveau de Boltzmann",        coutBase: 2600000000000000,       facteur: 1.15, prod: 7500000000000,   icone: "icone_boltzmann" },
+  { id: "hawking",     nom: "Rayonnement de Hawking",      coutBase: 30000000000000000,      facteur: 1.15, prod: 100000000000000,  icone: "icone_hawking" },
+  { id: "trounoir",    nom: "Trou noir",                   coutBase: 420000000000000000,     facteur: 1.15, prod: 1200000000000000, icone: "icone_trounoir" },
+  { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 4800000000000000000,    facteur: 1.15, prod: 12000000000000000, icone: "icone_wormhole" },
+  { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 61000000000000000000,   facteur: 1.15, prod: 100000000000000000, icone: "icone_hulivers" },
+  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1e104,  facteur: 1.15, prod: 100000000000000000000000, icone: "icone_mortthermique" },
 ];
 
 // --- Définition des upgrades ---
@@ -58,26 +58,32 @@ const UPGRADES = [
     effet: { cible: "production", type: "mult", valeur: 2 } },
   { id: "nothing",      nom: "Rien n'est gratuit",      cout: 0,  desc: "Ne fait rien, ou presque",
     effet: { cible: "production", type: "mult", valeur: 1 } },
+  { id: "cafe", nom: "café", cout: 5000000,  desc: "Du café pour les chercheurs, + 70% de découvertes",
+    effet: { cible: "labo", type: "mult", valeur: 1.7 } },
   { id: "neige", nom: "Il neige !", cout: 150000000,  desc: "Des flocons partout",
     effet: { cible: "koch", type: "mult", valeur: 3 } },
   { id: "calculateur", nom: "Super Calculateur", cout: 300000000,  desc: "Entropie x3 pour le boulanger",
     effet: { cible: "boulanger", type: "mult", valeur: 3 } },
   { id: "4dimension", nom: "Dimension 4", cout: 5000000000,  desc: "Le clic change de niveau",
     effet: { cible: "clic", type: "add", valeur: 1000 } },
-  { id: "secondprincipe", nom: "Second principe", cout: 20000000000000,  desc: "La loi qui gouverne tout : double le clic et la production",
+  { id: "secondprincipe", nom: "Second principe", cout: 100000000000,  desc: "La loi qui gouverne tout : doule le clic et la production",
     effet: { cible: "global", type: "mult", valeur: 2 } },
-  { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : double Lorenz",
+  { id: "papillon",    nom: "Effet papillon",       cout: 3000000000000,   desc: "Un battement d'aile déchaîne la tempête : triple Lorenz",
     effet: { cible: "lorenz", type: "mult", valeur: 2 } },
-  { id: "arret",       nom: "Problème de l'arrêt",  cout: 250000000000000, desc: "Elle ne s'arrête jamais : double la Machine de Turing",
+  { id: "bruitthermique",       nom: "Bruit thermique",  cout: 50000000000000, desc: "Les moteurs Browniens sont en surrégime",
+    effet: { cible: "brownien", type: "add", valeur: 4000000000 } },
+  { id: "arret",       nom: "Problème de l'arrêt",  cout: 250000000000000, desc: "Elle ne s'arrête jamais : + 30% sur la Machine de Turing",
     effet: { cible: "turing", type: "mult", valeur: 2 } },
-  { id: "holographie", nom: "Principe holographique", cout: 3000000000, desc: "Toute l'information sur la surface : double toute la production",
+  { id: "univers", nom: "Quelque part dans l'univers", cout: 6000000000000000, desc: "Le cerveau de Boltzmann existe ailleurs, + 40% d'entropie",
+    effet: { cible: "boltzmann", type: "mult", valeur: 1.4 } },
+  { id: "holographie", nom: "Principe holographique", cout: 100000000000000000, desc: "Toute l'information de la surface : x4 sur toute la production",
     effet: { cible: "production", type: "mult", valeur: 2 } },
   { id: "horizon",     nom: "Horizon des évènements", cout: 8000000000000000000, desc: "Double la production du Trou noir",
     effet: { cible: "trounoir", type: "mult", valeur: 2 } },
   { id: "bigbang",     nom: "Big Bang",             cout: 120000000000000000000, desc: "Le grand commencement : triple le clic et la production",
     effet: { cible: "global", type: "mult", valeur: 3 } },
-  { id: "ignorance",   nom: "Ignorance du démon",   cout: 8000000000000000000000, desc: "Moins Laplace comprend : triple toute la production",
-    effet: { cible: "production", type: "mult", valeur: 3 } },
+  { id: "ignorance",   nom: "Ignorance du démon",   cout: 800000000000000000000, desc: "Moins Laplace comprend : x1000 sur toute la production",
+    effet: { cible: "production", type: "mult", valeur: 1000 } },
 ];
 
 
@@ -120,11 +126,14 @@ function up_mult(def) {                               // upgrades multiplicative
 function productionTotale(etat) {
   let total = 0;
   for (const def of PLIEUSES) {
-      const quantite = etat.plieuses[def.id];    
+      const quantite = etat.plieuses[def.id];
       const production = def.prod;
       const upgrade_mult = up_mult(def); //  1 = pas de changement
       const upgrade_add = up_add(def); // 0 = pas de changement
       total = total + quantite * (production + upgrade_add) * upgrade_mult;
+  }
+  if (Date.now() < etat.buffProductionJusqua) {
+    total = total * 2;
   }
   return total;
 }
@@ -369,6 +378,7 @@ function etatInitial() {
     boutiqueDebloquee: false,       // reste vrai une fois atteint, même si on dépense sous le seuil
     ameliorationsDebloquees: false,
     tauxDebloque: false,
+    buffProductionJusqua: 0,        // horodatage de fin du buff x2 (Simon) ; 0 = pas de buff actif
   };
 }
 let etat = etatInitial()
@@ -419,6 +429,10 @@ function formaterEntropie(n) {
 
 const RANGS_VISIBLES_AVANCE = 1;   // nb de plieuses non achetées montrées après la dernière achetée
 
+// --- Suivi de la révélation des plieuses, pour auto-scroll vers les nouvelles cartes ---
+let dernierRangRevele = -1;     // rang le plus avancé révélé lors du rendu précédent
+let premierAffichage = true;    // true tant que afficher() n'a pas encore tourné une 1re fois
+
 const elJeu               = document.querySelector(".jeu");
 const elPanneauPuzzle     = document.getElementById("panneau-puzzle");
 const elPanneauPlieuses   = document.getElementById("panneau-plieuses");
@@ -427,6 +441,7 @@ const elValiderPuzzle     = document.getElementById("valider");
 const elEntropieTaux      = document.getElementById("entropie-taux");
 const elAirePliageNote    = document.getElementById("aire-pliage-note");
 const elPuissanceClic     = document.getElementById("puissance-clic");
+const elSectionSimon      = document.getElementById("section-simon");
 
 function afficher() {
   elEntropie.textContent = formaterEntropie(etat.entropie);
@@ -449,7 +464,10 @@ function afficher() {
 
   elPanneauPlieuses.hidden = !etat.boutiqueDebloquee;
   elSectionAmeliorations.hidden = !etat.ameliorationsDebloquees;
-  elPanneauPuzzle.hidden = !etat.upgrades.includes("devinette");
+
+  const simonDebloque = etat.plieuses.boltzmann > 0;
+  elSectionSimon.hidden = !simonDebloque;
+  elPanneauPuzzle.hidden = !(etat.upgrades.includes("devinette") || simonDebloque);
 
   elJeu.classList.toggle("sans-puzzle", elPanneauPuzzle.hidden);
   elJeu.classList.toggle("sans-panneau", elPanneauPlieuses.hidden);
@@ -475,6 +493,14 @@ function afficher() {
     carte.classList.toggle("indisponible", etat.entropie < prix);
     carte.style.display = rang > dernierRangPossede + RANGS_VISIBLES_AVANCE ? "none" : "";
   });
+
+  const rangReveleActuel = Math.min(dernierRangPossede + RANGS_VISIBLES_AVANCE, PLIEUSES.length - 1);
+  if (!premierAffichage && rangReveleActuel > dernierRangRevele) {
+    const carteRevelee = elBoutique.querySelector(`[data-id="${PLIEUSES[rangReveleActuel].id}"]`);
+    carteRevelee?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+  }
+  dernierRangRevele = rangReveleActuel;
+  premierAffichage = false;
 
   let dernierRangUpgradePossede = -1;
   UPGRADES.forEach((def, rang) => {

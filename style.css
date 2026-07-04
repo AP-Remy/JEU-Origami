@@ -249,6 +249,74 @@ body {
   color: var(--sauge);
 }
 
+/* --- Simon (colonne gauche, sous le puzzle) --- */
+
+.simon-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  background: var(--carte);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.simon-carte.en-cooldown {
+  opacity: 0.4;
+  filter: grayscale(0.6);
+  pointer-events: none;
+}
+
+.simon-feuille {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.simon-cote {
+  cursor: pointer;
+  filter: brightness(0.75);
+  transition: filter 0.1s ease;
+}
+
+.simon-cote:active { filter: brightness(0.6); }
+.simon-cote.actif  { filter: brightness(1.35); }
+
+.simon-cote[data-cote="haut"]   { fill: #e2938f; }
+.simon-cote[data-cote="droite"] { fill: #c0524f; }
+.simon-cote[data-cote="bas"]    { fill: #8a3230; }
+.simon-cote[data-cote="gauche"] { fill: #a8433f; }
+
+.simon-lancer {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--bordure);
+  background: var(--carte-hover);
+  color: var(--texte);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: background 0.15s ease, filter 0.15s ease;
+}
+
+.simon-lancer:hover { filter: brightness(1.2); }
+
+.simon-lancer:disabled {
+  opacity: 0.5;
+  cursor: default;
+  filter: none;
+}
+
+.simon-resultat {
+  margin: 0;
+  min-height: 1.2em;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--sauge);
+}
+
 
 /* --- Panneau latéral --- */
 
