@@ -284,7 +284,7 @@ body {
 
 .simon-cote[data-cote="haut"]   { fill: #e2938f; }
 .simon-cote[data-cote="droite"] { fill: #c0524f; }
-.simon-cote[data-cote="bas"]    { fill: #8a3230; }
+.simon-cote[data-cote="bas"]    { fill: #8a302e; }
 .simon-cote[data-cote="gauche"] { fill: #a8433f; }
 
 .simon-lancer {
