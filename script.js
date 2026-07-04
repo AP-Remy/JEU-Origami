@@ -435,6 +435,7 @@ let premierAffichage = true;    // true tant que afficher() n'a pas encore tourn
 
 const elJeu               = document.querySelector(".jeu");
 const elPanneauPuzzle     = document.getElementById("panneau-puzzle");
+const elSectionPuzzle     = document.getElementById("section-puzzle");
 const elPanneauPlieuses   = document.getElementById("panneau-plieuses");
 const elSectionAmeliorations = document.getElementById("section-ameliorations");
 const elValiderPuzzle     = document.getElementById("valider");
@@ -465,14 +466,16 @@ function afficher() {
   elPanneauPlieuses.hidden = !etat.boutiqueDebloquee;
   elSectionAmeliorations.hidden = !etat.ameliorationsDebloquees;
 
+  const puzzleDebloque = etat.upgrades.includes("devinette");
   const simonDebloque = etat.plieuses.boltzmann > 0;
+  elSectionPuzzle.hidden = !puzzleDebloque;
   elSectionSimon.hidden = !simonDebloque;
-  elPanneauPuzzle.hidden = !(etat.upgrades.includes("devinette") || simonDebloque);
+  elPanneauPuzzle.hidden = !(puzzleDebloque || simonDebloque);
 
   elJeu.classList.toggle("sans-puzzle", elPanneauPuzzle.hidden);
   elJeu.classList.toggle("sans-panneau", elPanneauPlieuses.hidden);
 
-  if (!elPanneauPuzzle.hidden) {
+  if (puzzleDebloque) {
     elValiderPuzzle.textContent = "-" + formaterNombre(coutTentativePuzzle(etat));
   }
 
