@@ -28,7 +28,7 @@ const PLIEUSES = [
   { id: "trounoir",    nom: "Trou noir",                   coutBase: 420000000000000000,     facteur: 1.15, prod: 1200000000000000, icone: "icone_trounoir" },
   { id: "wormhole",    nom: "Pont d'Einstein-Rosen",       coutBase: 4800000000000000000,    facteur: 1.15, prod: 12000000000000000, icone: "icone_wormhole" },
   { id: "hulivers",    nom: "Effondrement du vide",        coutBase: 61000000000000000000,   facteur: 1.15, prod: 100000000000000000, icone: "icone_hulivers" },
-  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1e104,  facteur: 1.15, prod: 100000000000000000000000, icone: "icone_mortthermique" },
+  { id: "mortthermique", nom: "Mort thermique",            coutBase: 1e104,  facteur: 1, prod: 0, icone: "icone_mortthermique" },
 ];
 
 // --- Définition des upgrades ---

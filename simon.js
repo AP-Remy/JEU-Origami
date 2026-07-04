@@ -3,7 +3,7 @@
 const SIMON_LONGUEURS    = [4, 5, 6];  // longueur de chaque manche successive
 const SIMON_COTES        = ["haut", "droite", "bas", "gauche"];
 const SIMON_COOLDOWN_MS  = 30000;
-const SIMON_BUFF_MS      = 10000;
+const SIMON_BUFF_MS      = 20000;
 const SIMON_DELAI_FLASH  = 500;
 const SIMON_DELAI_PAUSE  = 250;
 const SIMON_DELAI_MANCHE = 2000;   // pause entre deux manches réussies
@@ -94,7 +94,7 @@ async function simonClicCote(cote) {
 function simonTerminerJeu(victoire) {
   if (victoire) {
     etat.buffProductionJusqua = Date.now() + SIMON_BUFF_MS;
-    elSimonResultat.textContent = "Trois manches réussies ! Production doublée pendant 10s.";
+    elSimonResultat.textContent = "Trois manches réussies ! Gains doublés pendant 20s.";
   } else {
     elSimonResultat.textContent = "";
   }
