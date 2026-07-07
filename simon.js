@@ -1,6 +1,6 @@
 // dans script.js — le pont entre simon et le moteur
 
-const SIMON_LONGUEURS    = [4, 5, 6];  // longueur de chaque manche successive
+const SIMON_LONGUEURS    = [5, 6, 7];  // longueur de chaque manche successive
 const SIMON_COTES        = ["haut", "droite", "bas", "gauche"];
 const SIMON_COOLDOWN_MS  = 30000;
 const SIMON_BUFF_MS      = 20000;
